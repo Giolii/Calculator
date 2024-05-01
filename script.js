@@ -23,8 +23,8 @@ let display = document.querySelector('.result');
 let numToDisplay = document.querySelectorAll('.numbers');
 numToDisplay.forEach((num)=>{
     num.addEventListener('click', ()=>{
-        display.textContent = calculator.nums.join('')
         calculator.nums.push(num.textContent)
+        display.textContent = calculator.nums.join('')
     })
 })
 
