@@ -1,5 +1,5 @@
 let calculator = {
-    numbers: [],
+    nums: [],
 add: function add(num1,num2){//add
    return num1+num2
 },
@@ -19,6 +19,13 @@ operate: function operate(num1,operator,num2){//operate
     else if (operator === '/') return divide(num1,num2)
 }
 }
+let display = document.querySelector('.result');
+let numToDisplay = document.querySelectorAll('.numbers');
+numToDisplay.forEach((num)=>{
+    num.addEventListener('click', ()=>{
+        display.textContent = calculator.nums.join('')
+        calculator.nums.push(num.textContent)
+    })
+})
 
-
-
+console.log(calculator.nums) 
