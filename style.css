@@ -2,17 +2,50 @@ body{
 display: flex;
 align-items: center;
 justify-content: center;
+background-image: url("https://forum.chickeninvaders.com/uploads/db1091/01ac9cfb9dea179235f9364b43d5106f0547605a");
 
 }
 .case{
     display: flex;
-    background-color: rgb(29, 21, 81);
+    background-color: black;
     height: 600px;
-    width: 400px;
+    width: 300px;
     flex-direction: column;
+    border-radius: 15%;
 }
 
 .display{
-    color:white;
-    text-align: center;
+    color:rgb(251, 251, 251);
+    height: 250px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.result{
+    padding: 20px;
+    font-size: 60px;
+
+
+}
+.keyboard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.buttons{
+    width: 65px;
+    height: 65px; 
+    border-radius: 50%;
+    color: aliceblue;
+    font-size: 30px;
+    border-style: none;
+}
+.operators{
+    background-color: rgb(252, 136, 47);
+}
+.numbers{
+    background-color: rgb(58, 58, 58);
 }
