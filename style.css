@@ -11,7 +11,7 @@ background-image: url("https://forum.chickeninvaders.com/uploads/db1091/01ac9cfb
     height: 600px;
     width: 300px;
     flex-direction: column;
-    border-radius: 15%;
+    border-radius: 12%;
 }
 
 .display{

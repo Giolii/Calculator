@@ -22,7 +22,7 @@ operate: function operate(num1,operator,num2){//operate
 }
 }
 let display = document.querySelector('.result');
-let numToDisplay = document.querySelectorAll('.numbers');
+let numbers = document.querySelectorAll('.numbers');
 numToDisplay.forEach((num)=>{
     num.addEventListener('click', ()=>{
         calculator.nums.push(num.textContent)
@@ -33,33 +33,9 @@ numToDisplay.forEach((num)=>{
 let operators = document.querySelectorAll('.operators')
 operators.forEach((operator)=>
     operator.addEventListener('click',()=>{
-        if ( calculator.operator.length === 0) {
-        display.textContent = ''
-        calculator.operator.splice(0,1,operator.textContent)
-        let numToMove = calculator.nums.splice(0,calculator.nums.length)
-        calculator.numFirst.push(... numToMove)
-        calculator.numFirst = calculator.numFirst.join('')}
-            else if(calculator.operator.length === 1) {
-            
-            }
-    }
-    ))
+        
+    }))
+
 let equal = document.querySelector('.equal')
 equal.addEventListener('click',function equalButton() {
-    calculator.nums = calculator.nums.join('')
-    if(calculator.operator[0] === '+') {
-        display.textContent = calculator.add(parseInt(calculator.nums),parseInt(calculator.numFirst))
-    }
-    else if(calculator.operator[0] === '-') {
-        display.textContent = calculator.sub(parseInt(calculator.numFirst),parseInt(calculator.nums))
-    }
-    else if(calculator.operator[0] === 'x') {
-    display.textContent = calculator.multi(parseInt(calculator.numFirst),parseInt(calculator.nums))
-    }
-    else if(calculator.operator[0] === '/') {
-        display.textContent = calculator.divide(parseInt(calculator.numFirst),parseInt(calculator.nums))
-        }
-    calculator.numFirst = []
-    calculator.nums = []
-
-})
+    })
