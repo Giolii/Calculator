@@ -43,9 +43,17 @@ background-image: url("https://forum.chickeninvaders.com/uploads/db1091/01ac9cfb
     font-size: 30px;
     border-style: none;
 }
+
+
 .operators{
     background-color: rgb(252, 136, 47);
 }
+.operators:active{
+    background-color: rgb(250, 158, 88);
+}
 .numbers{
     background-color: rgb(58, 58, 58);
+}
+.numbers:active{
+    background-color: rgb(113, 112, 112);
 }
