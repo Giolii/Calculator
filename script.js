@@ -15,12 +15,33 @@ divide: function divide(num1,num2){//divide
     return (num1/num2).toFixed(1)
 },
 operate: function (num1,operator,num2){//operate
-    if      (operator === '+') return (parseFloat(num1) + parseFloat(num2))
-    else if (operator === '-') return (parseFloat(num1) - parseFloat(num2))
-    else if (operator === 'x') return (parseFloat(num1) * parseFloat(num2))
-    else if (operator === '/') return (parseFloat(num1) / parseFloat(num2))
+    if      (operator === '+') {
+        let result = (parseFloat(num1) + parseFloat(num2))
+        if (countDecimals(result) > 2) return parseFloat(result).toFixed(2)
+        else return result
+    }
+    else if (operator === '-') {
+            let result = (parseFloat(num1) - parseFloat(num2))
+            if (countDecimals(result) > 2) return parseFloat(result).toFixed(2)
+            else return result
+        }
+    else if (operator === 'x') {
+        let result = (parseFloat(num1) * parseFloat(num2))
+        if (countDecimals(result) > 2) return parseFloat(result).toFixed(2)
+        else return result
+    }
+    else if (operator === '/') {
+        let result = (parseFloat(num1) / parseFloat(num2))
+        if (countDecimals(result) > 2) return parseFloat(result).toFixed(2)
+        else return result
+    }},
+dotCounter: [],
 }
+var countDecimals = function (value) {
+    if(Math.floor(value) === value) return 0;
+    return value.toString().split(".")[1].length || 0; 
 }
+
 let display = document.querySelector('.result');
 let numbers = document.querySelectorAll('.numbers');
 numbers.forEach((number)=>{
@@ -39,6 +60,7 @@ operators.forEach((operator)=>
         calculator.operator = operator.textContent //Save operator on object
         calculator.lastNumber = calculator.firstNumber.join('')//Save Number on object
         calculator.firstNumber = [] //return empty array
+        calculator.dotCounter = [] //empty dot . counter (1 max)
         } else {
             calculator.firstNumber = calculator.firstNumber.join('')
             let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
@@ -46,17 +68,14 @@ operators.forEach((operator)=>
             calculator.lastNumber = resultFromOperator
             calculator.firstNumber = []
             calculator.operator = operator.textContent
+            calculator.dotCounter = []
         }
-        console.table(calculator)
     }))
 
 let equal = document.querySelector('.equal')
 equal.addEventListener('click',function equalButton() {
     calculator.firstNumber = calculator.firstNumber.join('')
             let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
-            console.log(calculator.firstNumber)
-            console.log(calculator.operator)
-            console.log(calculator.lastNumber)
             display.textContent = resultFromOperator
             calculator.lastNumber = []
             calculator.firstNumber = []
@@ -69,6 +88,7 @@ ac.addEventListener('click',()=>{
     calculator.lastNumber = []
     calculator.firstNumber = []
     calculator.operator = []
+    calculator.dotCounter = []
 })
 function limitArray(array,item){
     if (array.length > 6) return;
@@ -77,7 +97,6 @@ function limitArray(array,item){
 
 let back = document.querySelector('.back')
 back.addEventListener('click',()=>{
-    console.table(calculator)
     calculator.firstNumber.pop()
     display.textContent = calculator.firstNumber.join('')
 })
@@ -86,7 +105,46 @@ let dot = document.querySelector('.dot')
 dot.addEventListener('click', () =>{
     if(calculator.firstNumber.length === 0){
         calculator.firstNumber.push('0.')
-        console.table(calculator)
         display.textContent = calculator.firstNumber.join('')
+    }else if (calculator.dotCounter.length === 0){
+        calculator.firstNumber.push('.')
+        display.textContent = calculator.firstNumber.join('')
+        calculator.dotCounter.push('1')
+    }
+})
+
+
+document.addEventListener('keydown', function(e) {
+    console.log(e)
+  if (e.key >=0 && e.key <= 9){
+    if (calculator.firstNumber.length > 6) return;
+    else calculator.firstNumber.push(e.key)
+    display.textContent = calculator.firstNumber.join('')
+  }
+else if (e.key === '+' || e.key === '-' || (e.key.shiftKey === 'true' && e.key === '*') ||
+         e.key === '/' || e.key === '='){
+            if (calculator.operator.length === 0){
+                display.textContent = ''
+                calculator.operator = e.key //Save operator on object
+                calculator.lastNumber = calculator.firstNumber.join('')//Save Number on object
+                calculator.firstNumber = [] //return empty array
+                calculator.dotCounter = [] //empty dot . counter (1 max)
+                } else {
+                    if(calculator.firstNumber.length >= 1){ calculator.firstNumber = calculator.firstNumber.join('')}
+                    let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
+                    display.textContent = resultFromOperator
+                    calculator.lastNumber = resultFromOperator
+                    calculator.firstNumber = []
+                    calculator.operator = e.key
+                    calculator.dotCounter = []
+                }
+    }
+            else if (e.key === 'Enter'){
+                if(calculator.firstNumber.length >= 1){ calculator.firstNumber = calculator.firstNumber.join('')}
+                let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
+                display.textContent = resultFromOperator
+                calculator.lastNumber = []
+                calculator.firstNumber = []
+                calculator.operator = []
     }
 })
