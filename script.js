@@ -58,3 +58,8 @@ equal.addEventListener('click',function equalButton() {
             calculator.firstNumber = []
             calculator.operator = []
     })
+
+let ac = document.querySelector('.ac')
+ac.addEventListener('click',()=>{
+    console.log('clicked')
+})

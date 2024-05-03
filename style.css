@@ -45,7 +45,7 @@ background-image: url("https://forum.chickeninvaders.com/uploads/db1091/01ac9cfb
 }
 
 
-.operators,.equal{
+.operators,.equal,.ac{
     background-color: rgb(252, 136, 47);
 }
 .operators:active{
