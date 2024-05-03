@@ -17,22 +17,22 @@ divide: function divide(num1,num2){//divide
 operate: function (num1,operator,num2){//operate
     if      (operator === '+') {
         let result = (parseFloat(num1) + parseFloat(num2))
-        if (countDecimals(result) > 2) return parseFloat(result).toFixed(2)
+        if (countDecimals(result) > 4) return parseFloat(result).toFixed(2)
         else return result
     }
     else if (operator === '-') {
             let result = (parseFloat(num1) - parseFloat(num2))
-            if (countDecimals(result) > 2) return parseFloat(result).toFixed(2)
+            if (countDecimals(result) > 4) return parseFloat(result).toFixed(2)
             else return result
         }
     else if (operator === 'x') {
         let result = (parseFloat(num1) * parseFloat(num2))
-        if (countDecimals(result) > 2) return parseFloat(result).toFixed(2)
+        if (countDecimals(result) > 4) return parseFloat(result).toFixed(2)
         else return result
     }
     else if (operator === '/') {
         let result = (parseFloat(num1) / parseFloat(num2))
-        if (countDecimals(result) > 2) return parseFloat(result).toFixed(2)
+        if (countDecimals(result) > 4) return parseFloat(result).toFixed(2)
         else return result
     }},
 dotCounter: [],
@@ -61,8 +61,10 @@ operators.forEach((operator)=>
         calculator.lastNumber = calculator.firstNumber.join('')//Save Number on object
         calculator.firstNumber = [] //return empty array
         calculator.dotCounter = [] //empty dot . counter (1 max)
-        } else if (calculator.display.textContent > 0 && calculator.display.textContent != '' &&
-                    calculator.display.textContent != 'Undefined' && calculator.display.textContent != 'null'){ 
+        }
+        else if (calculator.firstNumber.length > 0)
+        { 
+            console.log(calculator.firstNumber)
             calculator.firstNumber = calculator.firstNumber.join('')
             let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
             display.textContent = resultFromOperator
@@ -70,6 +72,10 @@ operators.forEach((operator)=>
             calculator.firstNumber = []
             calculator.operator = operator.textContent
             calculator.dotCounter = []
+        }
+        else if (calculator.operator.length > 0 && calculator.lastNumber != ''){
+            console.log(calculator.lastNumber)
+            calculator.operator = operator.textContent
         }
     }))
 
