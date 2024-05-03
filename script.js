@@ -17,7 +17,7 @@ divide: function divide(num1,num2){//divide
 operate: function (num1,operator,num2){//operate
     if      (operator === '+') return (parseInt(num1) + parseInt(num2))
     else if (operator === '-') return (parseInt(num1) - parseInt(num2))
-    else if (operator === '*') return (parseInt(num1) * parseInt(num2))
+    else if (operator === 'x') return (parseInt(num1) * parseInt(num2))
     else if (operator === '/') return (parseInt(num1) / parseInt(num2))
 }
 }
@@ -39,12 +39,12 @@ operators.forEach((operator)=>
         calculator.lastNumber = calculator.firstNumber.join('')//Save Number on object
         calculator.firstNumber = [] //return empty array
         } else {
-            calculator.operator = operator.textContent
             calculator.firstNumber = calculator.firstNumber.join('')
-            let resultFromOperator = calculator.operate(calculator.firstNumber,calculator.operator,calculator.lastNumber)
+            let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
             display.textContent = resultFromOperator
             calculator.lastNumber = resultFromOperator
             calculator.firstNumber = []
+            calculator.operator = operator.textContent
         }
         console.table(calculator)
     }))
@@ -52,7 +52,10 @@ operators.forEach((operator)=>
 let equal = document.querySelector('.equal')
 equal.addEventListener('click',function equalButton() {
     calculator.firstNumber = calculator.firstNumber.join('')
-            let resultFromOperator = calculator.operate(calculator.firstNumber,calculator.operator,calculator.lastNumber)
+            let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
+            console.log(calculator.firstNumber)
+            console.log(calculator.operator)
+            console.log(calculator.lastNumber)
             display.textContent = resultFromOperator
             calculator.lastNumber = []
             calculator.firstNumber = []
@@ -61,5 +64,8 @@ equal.addEventListener('click',function equalButton() {
 
 let ac = document.querySelector('.ac')
 ac.addEventListener('click',()=>{
-    console.log('clicked')
+    display.textContent = '0'
+    calculator.lastNumber = []
+    calculator.firstNumber = []
+    calculator.operator = []
 })
