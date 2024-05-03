@@ -51,8 +51,12 @@ background-image: url("https://forum.chickeninvaders.com/uploads/db1091/01ac9cfb
     border-style: none;
 }
 
-
-.operators,.equal,.ac{
+.new{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.operators,.equal,.ac,.new{
     background-color: rgb(252, 136, 47);
 }
 .operators:active{
@@ -63,4 +67,8 @@ background-image: url("https://forum.chickeninvaders.com/uploads/db1091/01ac9cfb
 }
 .numbers:active{
     background-color: rgb(113, 112, 112);
+}
+.long{
+    width: 120px;
+    border-radius: 20%;
 }
