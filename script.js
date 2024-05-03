@@ -15,10 +15,10 @@ divide: function divide(num1,num2){//divide
     return (num1/num2).toFixed(1)
 },
 operate: function (num1,operator,num2){//operate
-    if      (operator === '+') return (parseInt(num1) + parseInt(num2))
-    else if (operator === '-') return (parseInt(num1) - parseInt(num2))
-    else if (operator === 'x') return (parseInt(num1) * parseInt(num2))
-    else if (operator === '/') return (parseInt(num1) / parseInt(num2))
+    if      (operator === '+') return (parseFloat(num1) + parseFloat(num2))
+    else if (operator === '-') return (parseFloat(num1) - parseFloat(num2))
+    else if (operator === 'x') return (parseFloat(num1) * parseFloat(num2))
+    else if (operator === '/') return (parseFloat(num1) / parseFloat(num2))
 }
 }
 let display = document.querySelector('.result');
@@ -69,17 +69,24 @@ ac.addEventListener('click',()=>{
     calculator.lastNumber = []
     calculator.firstNumber = []
     calculator.operator = []
-    let numberTest = '1234345352523552'
-    console.log(limitText(numberTest))
 })
-
-function limitText(originalNumber){
- if (originalNumber.length > 7){
-    return originalNumber.substring(0,7)
- }
-}
-
 function limitArray(array,item){
     if (array.length > 6) return;
     else calculator.firstNumber.push(item.textContent)
 }
+
+let back = document.querySelector('.back')
+back.addEventListener('click',()=>{
+    console.table(calculator)
+    calculator.firstNumber.pop()
+    display.textContent = calculator.firstNumber.join('')
+})
+
+let dot = document.querySelector('.dot')
+dot.addEventListener('click', () =>{
+    if(calculator.firstNumber.length === 0){
+        calculator.firstNumber.push('0.')
+        console.table(calculator)
+        display.textContent = calculator.firstNumber.join('')
+    }
+})
