@@ -25,7 +25,8 @@ let display = document.querySelector('.result');
 let numbers = document.querySelectorAll('.numbers');
 numbers.forEach((number)=>{
     number.addEventListener('click', ()=>{
-        calculator.firstNumber.push(number.textContent)
+        // calculator.firstNumber.push(number.textContent)
+        limitArray(calculator.firstNumber,number)
         display.textContent = calculator.firstNumber.join('')
     })
 })
@@ -68,4 +69,17 @@ ac.addEventListener('click',()=>{
     calculator.lastNumber = []
     calculator.firstNumber = []
     calculator.operator = []
+    let numberTest = '1234345352523552'
+    console.log(limitText(numberTest))
 })
+
+function limitText(originalNumber){
+ if (originalNumber.length > 7){
+    return originalNumber.substring(0,7)
+ }
+}
+
+function limitArray(array,item){
+    if (array.length > 6) return;
+    else calculator.firstNumber.push(item.textContent)
+}
