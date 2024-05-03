@@ -72,3 +72,8 @@ background-image: url("https://forum.chickeninvaders.com/uploads/db1091/01ac9cfb
     width: 120px;
     border-radius: 20%;
 }
+
+button:focus {
+    outline: none;
+    box-shadow: none;
+  }
