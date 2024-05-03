@@ -16,9 +16,9 @@ divide: function divide(num1,num2){//divide
 },
 operate: function (num1,operator,num2){//operate
     if      (operator === '+') return (parseInt(num1) + parseInt(num2))
-    else if (operator === '-') return sub(num1,num2)
-    else if (operator === '*') return multi(num1,num2)
-    else if (operator === '/') return divide(num1,num2)
+    else if (operator === '-') return (parseInt(num1) - parseInt(num2))
+    else if (operator === '*') return (parseInt(num1) * parseInt(num2))
+    else if (operator === '/') return (parseInt(num1) / parseInt(num2))
 }
 }
 let display = document.querySelector('.result');
@@ -37,7 +37,7 @@ operators.forEach((operator)=>
         display.textContent = ''
         calculator.operator = operator.textContent //Save operator on object
         calculator.lastNumber = calculator.firstNumber.join('')//Save Number on object
-        calculator.firstNumber = []
+        calculator.firstNumber = [] //return empty array
         } else {
             calculator.operator = operator.textContent
             calculator.firstNumber = calculator.firstNumber.join('')
@@ -45,11 +45,16 @@ operators.forEach((operator)=>
             display.textContent = resultFromOperator
             calculator.lastNumber = resultFromOperator
             calculator.firstNumber = []
-
         }
         console.table(calculator)
     }))
 
 let equal = document.querySelector('.equal')
 equal.addEventListener('click',function equalButton() {
+    calculator.firstNumber = calculator.firstNumber.join('')
+            let resultFromOperator = calculator.operate(calculator.firstNumber,calculator.operator,calculator.lastNumber)
+            display.textContent = resultFromOperator
+            calculator.lastNumber = []
+            calculator.firstNumber = []
+            calculator.operator = []
     })
