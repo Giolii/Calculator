@@ -7,11 +7,13 @@ background-image: url("https://forum.chickeninvaders.com/uploads/db1091/01ac9cfb
 }
 .case{
     display: flex;
-    background-color: black;
+    background-image: url('iphone.png');
+    background-size: 300px 600px ;
     height: 600px;
     width: 300px;
     flex-direction: column;
-    border-radius: 12%;
+    align-items: center;
+
 }
 
 .display{
@@ -41,10 +43,12 @@ background-image: url("https://forum.chickeninvaders.com/uploads/db1091/01ac9cfb
     align-items: center;
     justify-content: center;
     gap: 5px;
+    width:250px;
+    height: 250px;
 }
 .buttons{
-    width: 65px;
-    height: 65px; 
+    width: 50px;
+    height: 50px; 
     border-radius: 50%;
     color: aliceblue;
     font-size: 30px;
