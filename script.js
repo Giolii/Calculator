@@ -57,7 +57,7 @@ numbers.forEach((number)=>{
 let operators = document.querySelectorAll('.operators')
 operators.forEach((operator)=>
     operator.addEventListener('click',()=>{
-        if (calculator.operator.length === 0){
+        if (calculator.operator.length === 0 && display.textContent != ''){
         display.textContent = ''
         calculator.operator = operator.textContent //Save operator on object
         calculator.lastNumber = calculator.firstNumber.join('')//Save Number on object
@@ -133,7 +133,7 @@ document.addEventListener('keydown', function(e) {
 }
     else if (e.key === '+' || e.key === '-' || e.key === '*' ||
          e.key === '/'){
-            if (calculator.operator.length === 0){
+            if (calculator.operator.length === 0 && display.textContent != ''){
                 display.textContent = ''
                 calculator.operator = e.key //Save operator on object
                 calculator.lastNumber = calculator.firstNumber.join('')//Save Number on object
