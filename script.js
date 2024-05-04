@@ -25,7 +25,7 @@ operate: function (num1,operator,num2){//operate
             if (countDecimals(result) > 4) return parseFloat(result).toFixed(2)
             else return result
         }
-    else if (operator === 'x') {
+    else if (operator === 'x' || operator === '*') {
         let result = (parseFloat(num1) * parseFloat(num2))
         if (countDecimals(result) > 4) return parseFloat(result).toFixed(2)
         else return result
@@ -63,8 +63,7 @@ operators.forEach((operator)=>
         calculator.dotCounter = [] //empty dot . counter (1 max)
         }
         else if (calculator.firstNumber.length > 0)
-        { 
-            console.log(calculator.firstNumber)
+        {
             calculator.firstNumber = calculator.firstNumber.join('')
             let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
             display.textContent = resultFromOperator
@@ -74,7 +73,6 @@ operators.forEach((operator)=>
             calculator.dotCounter = []
         }
         else if (calculator.operator.length > 0 && calculator.lastNumber != ''){
-            console.log(calculator.lastNumber)
             calculator.operator = operator.textContent
         }
     }))
@@ -121,31 +119,42 @@ dot.addEventListener('click', () =>{
 })
 
 
-// document.addEventListener('keydown', function(e) {
-//     console.log(e)
-//   if (e.key >=0 && e.key <= 9){
-//     if (calculator.firstNumber.length > 6) return;
-//     else calculator.firstNumber.push(e.key)
-//     display.textContent = calculator.firstNumber.join('')
-//   }
-// else if (e.key === '+' || e.key === '-' || (e.key.shiftKey === 'true' && e.key === '*') ||
-//          e.key === '/' || e.key === '='){
-//             if (calculator.operator.length === 0){
-//                 display.textContent = ''
-//                 calculator.operator = e.key //Save operator on object
-//                 calculator.lastNumber = calculator.firstNumber.join('')//Save Number on object
-//                 calculator.firstNumber = [] //return empty array
-//                 calculator.dotCounter = [] //empty dot . counter (1 max)
-//                 } else {
-//                     if(calculator.firstNumber.length >= 1){ calculator.firstNumber = calculator.firstNumber.join('')}
-//                     let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
-//                     display.textContent = resultFromOperator
-//                     calculator.lastNumber = resultFromOperator
-//                     calculator.firstNumber = []
-//                     calculator.operator = e.key
-//                     calculator.dotCounter = []
-//                 }
-//     }
+document.addEventListener('keydown', function(e) {
+    console.log(e)
+    if (e.key === '+' || e.key === '-' || e.key === '*' ||
+         e.key === '/'){
+            if (calculator.operator.length === 0){
+                display.textContent = ''
+                calculator.operator = e.key //Save operator on object
+                calculator.lastNumber = calculator.firstNumber.join('')//Save Number on object
+                calculator.firstNumber = [] //return empty array
+                calculator.dotCounter = [] //empty dot . counter (1 max)
+                console.log(calculator.operator)
+                }
+                else if (calculator.firstNumber.length > 0)
+                {
+                    calculator.firstNumber = calculator.firstNumber.join('')
+                    let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
+                    display.textContent = resultFromOperator
+                    calculator.lastNumber = resultFromOperator
+                    calculator.firstNumber = []
+                    calculator.operator = e.key
+                    calculator.dotCounter = []
+                    console.log(calculator.operator)
+                }
+                else if (calculator.operator.length > 0 && calculator.lastNumber != ''){
+                    calculator.operator = e.key
+                    console.log(calculator.operator)
+                }
+                }
+  if (e.key >=0 && e.key <= 9){
+    if (calculator.firstNumber.length > 7) return;
+    else{
+    calculator.firstNumber.push(e.key)
+    display.textContent = calculator.firstNumber.join('')
+        }
+    }
+})
 //             else if (e.key === 'Enter'){
 //                 if(calculator.firstNumber.length >= 1){ calculator.firstNumber = calculator.firstNumber.join('')}
 //                 let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
