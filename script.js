@@ -39,6 +39,8 @@ dotCounter: [],
 }
 var countDecimals = function (value) {
     if(Math.floor(value) === value) return 0;
+    else if (isNaN(value)) return 0;
+    else
     return value.toString().split(".")[1].length || 0; 
 }
 
@@ -121,7 +123,15 @@ dot.addEventListener('click', () =>{
 
 document.addEventListener('keydown', function(e) {
     console.log(e)
-    if (e.key === '+' || e.key === '-' || e.key === '*' ||
+     if (e.key === 'Enter' || e.key === '='){
+        if(calculator.firstNumber.length >= 1){ calculator.firstNumber = calculator.firstNumber.join('')}
+        let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
+        display.textContent = resultFromOperator
+        calculator.lastNumber = []
+        calculator.firstNumber = []
+        calculator.operator = []
+}
+    else if (e.key === '+' || e.key === '-' || e.key === '*' ||
          e.key === '/'){
             if (calculator.operator.length === 0){
                 display.textContent = ''
@@ -147,7 +157,7 @@ document.addEventListener('keydown', function(e) {
                     console.log(calculator.operator)
                 }
                 }
-  if (e.key >=0 && e.key <= 9){
+  else if (e.key >=0 && e.key <= 9){
     if (calculator.firstNumber.length > 7) return;
     else{
     calculator.firstNumber.push(e.key)
@@ -155,12 +165,3 @@ document.addEventListener('keydown', function(e) {
         }
     }
 })
-//             else if (e.key === 'Enter'){
-//                 if(calculator.firstNumber.length >= 1){ calculator.firstNumber = calculator.firstNumber.join('')}
-//                 let resultFromOperator = calculator.operate(calculator.lastNumber,calculator.operator,calculator.firstNumber)
-//                 display.textContent = resultFromOperator
-//                 calculator.lastNumber = []
-//                 calculator.firstNumber = []
-//                 calculator.operator = []
-//     }
-// })
