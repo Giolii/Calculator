@@ -47,10 +47,11 @@ background-size: 1980px 1080px;
     align-items: center;
     justify-content: center;
     gap: 5px;
-    width:250px;
     height: 250px;
     border: 1px solid lightcoral;
     margin-top: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 .buttons{
     width: 3rem;
