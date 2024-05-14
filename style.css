@@ -15,6 +15,7 @@ background-size: 1980px 1080px;
     width: 300px;
     flex-direction: column;
     align-items: center;
+    border: 2px solid yellow;
 
 }
 
@@ -23,6 +24,7 @@ background-size: 1980px 1080px;
     height: 250px;
     display: flex;
     width: 300px;
+    border: 1px solid lightblue;
 
 }
 .result{
@@ -47,10 +49,12 @@ background-size: 1980px 1080px;
     gap: 5px;
     width:250px;
     height: 250px;
+    border: 1px solid lightcoral;
+    margin-top: 2rem;
 }
 .buttons{
-    width: 1.6em;
-    height: 1.6em; 
+    width: 3rem;
+    height: 3rem; 
     border-radius: 50%;
     color: aliceblue;
     font-size: 30px;
