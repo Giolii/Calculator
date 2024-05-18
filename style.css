@@ -4,6 +4,7 @@ align-items: center;
 justify-content: center;
 background-image: url("https://images.pexels.com/photos/176851/pexels-photo-176851.jpeg?cs=srgb&dl=pexels-instawally-176851.jpg&fm=jpg");
 background-size: 100rem;
+box-sizing: border-box;
 
 
 }
@@ -60,8 +61,9 @@ background-size: 100rem;
     height: 1.5em; 
     border-radius: 50%;
     color: aliceblue;
-    font-size: 2em;
+    font-size: 2rem;
     border-style: none;
+
 }
 
 .new{
