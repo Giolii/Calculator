@@ -3,39 +3,42 @@ display: flex;
 align-items: center;
 justify-content: center;
 background-image: url("https://images.pexels.com/photos/176851/pexels-photo-176851.jpeg?cs=srgb&dl=pexels-instawally-176851.jpg&fm=jpg");
-background-size: 1980px 1080px;
+background-size: 100rem;
 
 
 }
 .case{
     display: flex;
-    background-image: url('iphone.png');
-    background-size: 300px 600px ;
-    height: 600px;
-    width: 300px;
+    background-image: url('https://pbs.twimg.com/media/DNK9s25VwAAO57m.png');
+    background-size: 55rem ;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 40rem;
+    width: 18rem;
     flex-direction: column;
     align-items: center;
-    border: 2px solid yellow;
+    /* border: 2px solid yellow; */
 
 }
 
 .display{
     color:rgb(251, 251, 251);
-    height: 250px;
+    min-height: 10rem;
     display: flex;
-    width: 300px;
-    border: 1px solid lightblue;
+    width: 18rem;
+    /* border: 1px solid lightblue; */
 
 }
 .result{
-    padding: 20px;
+    padding: 1rem;
     font-size: 3rem;
-    width: 300px;
-    height: 200px;
+    width: 18rem;
+    height: 15rem;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
     word-break: break-all;
+    /* border: 1px solid pink; */
 
 
 
@@ -46,19 +49,18 @@ background-size: 1980px 1080px;
     flex-wrap: wrap-reverse;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    height: 250px;
-    border: 1px solid lightcoral;
+    gap: 0.5rem;
+    /* border: 1px solid lightcoral; */
     margin-top: 2rem;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
 }
 .buttons{
-    width: 3rem;
-    height: 3rem; 
+    width: 1.5em;
+    height: 1.5em; 
     border-radius: 50%;
     color: aliceblue;
-    font-size: 2rem;
+    font-size: 2em;
     border-style: none;
 }
 
